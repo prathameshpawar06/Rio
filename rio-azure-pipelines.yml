@@ -35,11 +35,3 @@ steps:
     publishWebProjects: true
     arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: true
-
-# Deploy to Azure App Service (Free)
-- task: AzureWebApp@1
-  inputs:
-    azureSubscription: 'AzureFreeAppService'  # Update this to your actual service connection name
-    appName: 'FirstAzureDemo'                 # Update this to your actual Azure App Service name
-    appType: 'webApp'                         # <-- Required property
-    package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
